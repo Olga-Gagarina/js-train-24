@@ -2,6 +2,38 @@ console.log("Завдання: 2 ==============================");
 
 // Створюємо функцію task2
 function task2() {
+  function promise1() {
+    return new Promise ((resolve, reject) => {
+      setTimeout(() => {
+resolve ("Проміс 1 виконано");
+      }, 2000)
+    });
+  }
+  function promise2() {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+resolve("Проміс 2 виконано");
+      }, 5000)
+    });
+  }
+  Promise.race([promise1(),promise2()])
+  .then((result) => {
+    console.log(result);
+  }).catch((error) =>{
+    console.error(error.message);
+   }).finally(() => {
+    console.info("Завдання 2 завершено");
+   });
+
+//   Promise.all([loadFile("example.txt"),
+//  getInfoFile("Новинка!!!", 111),
+//  convertFile("file"),
+//  saveFile(),
+//  sendFileToClient() ]).then((data) => {
+//   console.log(data);
+//  }).catch((error) =>{
+//   console.error(error);
+//  });
   // Створюємо функцію promise1
   // Повертаємо новий проміс
   // Використовуємо setTimeout для імітації асинхронної операції, яка завершується через 2 секунди.
